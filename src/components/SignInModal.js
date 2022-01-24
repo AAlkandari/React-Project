@@ -30,10 +30,23 @@ function SignInModal() {
           <Modal.Title>Sign in</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={handleSubmit}>
+
+        <Form onSubmit={handleSubmit}>
+          <Form.Group className="mb-3">
+            <Form.Label>Username</Form.Label>
+              <Form.Control type="text" onChange={handleChange} value={user.username} name="username" placeholder="Enter Your Username" />
+           </Form.Group>
+
+          <Form.Group className="mb-3" >
+           <Form.Label>Password</Form.Label>
+            <Form.Control type="password" onChange={handleChange} value={user.password} name="password" placeholder="Enter Your Password"  />
+          </Form.Group>
+        </Form>
+
+          {/* <Form onSubmit={handleSubmit}>
             {
               <div>
-          <label>Username</label>
+          <label>Username: </label>
           <input
                 name="username"
                 value={user.username}
@@ -41,7 +54,8 @@ function SignInModal() {
                 placeholder="Type your username"
                 onChange={handleChange}/>
                 <br></br>
-          <label>Password</label>
+                <br></br>
+          <label>Password: </label>
           <input
             name="password"
             value={user.password}
@@ -50,7 +64,7 @@ function SignInModal() {
             onChange={handleChange}
           /></div>
             }
-          </Form>
+          </Form> */}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={handleSubmit}>

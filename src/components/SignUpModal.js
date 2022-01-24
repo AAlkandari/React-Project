@@ -8,7 +8,7 @@ function SignUpModal() {
     const [user, setUser] = useState({
       username: "",
       password: "",
-      email: "",
+      email: '',
     });
 
   const handleChange = (event) =>
@@ -30,18 +30,35 @@ function SignUpModal() {
           <Modal.Title>Sign up</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group className="mb-3">
+            <Form.Label>Username</Form.Label>
+              <Form.Control type="text" onChange={handleChange} value={user.username} name="username" placeholder="Enter Your Username" />
+           </Form.Group>
+
+          <Form.Group className="mb-3" >
+           <Form.Label>Password</Form.Label>
+            <Form.Control type="password" onChange={handleChange} value={user.password} name="password" placeholder="Enter Your Password"  />
+          </Form.Group>
+
+          <Form.Group className="mb-3" >
+           <Form.Label>Email</Form.Label>
+            <Form.Control type="email" onChange={handleChange} value={user.email} name="email" placeholder="Enter Your Email"  />
+          </Form.Group>
+        </Form>
+          {/* <Form onSubmit={handleSubmit}>
             {
               <div>
-          <label>Username</label>
+          <label>Username: </label>
           <input
                 name="username"
                 value={user.username}
                 type="text"
-                placeholder="Type your username"
+                placeholder="Enter your username"
                 onChange={handleChange}/>
                 <br></br>
-          <label>Password</label>
+                <br></br>
+          <label>Password: </label>
           <input
             name="password"
             value={user.password}
@@ -50,7 +67,8 @@ function SignUpModal() {
             onChange={handleChange}
           />
           <br></br>
-          <label>Email</label>
+          <br></br>
+          <label>Email: </label>
           <input
             name="email"
             value={user.email}
@@ -59,7 +77,7 @@ function SignUpModal() {
             onChange={handleChange}
           /></div>
             }
-          </Form>
+          </Form> */}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={handleSubmit}>

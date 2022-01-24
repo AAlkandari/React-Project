@@ -1,7 +1,10 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+<<<<<<< HEAD
 // import { Route, Switch } from "react-router";
+=======
+>>>>>>> JamiyaAuth
 import NavBar from "./components/NavBar";
 import Jam3yat from "./components/Jam3yat";
 import { Container } from "react-bootstrap";
