@@ -1,7 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { Route, Switch } from "react-router";
 import NavBar from "./components/NavBar";
 
 function App() {
