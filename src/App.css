@@ -2,6 +2,43 @@
   text-align: center;
 }
 
+.DetailsProfilePic {
+  display: flex;
+  justify-content: left;
+  width: 150px;
+}
+
+.DetailsHeading {
+  display: flex;
+}
+
+.DetailsPageButton {
+  display: flex;
+  justify-content: right;
+  margin-top: 10px;
+  margin-right: 10px;
+  background-color: #aefeff;
+}
+
+.card {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: "20px";
+  font-weight: "bold";
+  margin-left: 10;
+  margin-right: 10;
+  padding: 5px;
+  position: absolute;
+}
+
+.container {
+  flex: 1;
+  flex-direction: "column";
+  background-color: "red";
+  justify-content: "center";
+  align-items: "center";
+  text-align: left;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
