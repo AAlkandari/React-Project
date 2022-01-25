@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 import { Card, ListGroup, ListGroupItem } from "react-bootstrap/";
 import axios from "axios";
 import api from "../api";

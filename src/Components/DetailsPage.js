@@ -1,10 +1,13 @@
-import react from "react";
+import React from "react";
 import api from "../api";
 import DetailsBio from "./DetailsBio";
 import DetailsMembersList from "./DetailsMembersList";
 
 function DetailsPage() {
-  //   const jm3yaDetails = api.map((jm3ya) => <DetailsPage jm3ya={jm3ya} />);
+  //Below is my card mapping code from Ollivander's wand shop task
+  //const jm3yaDetails = api.map((jm3ya) => <DetailsPage jm3ya={jm3ya} />);
+  //Maybe try useState?
+
   return (
     <div>
       <div style={{ backgroundColor: "#aefeff" }}>
