@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import { observer } from 'mobx-react';
-import authStore from '../stores/authStore';
 import jamiyaStore from '../stores/jamiyaStore';
-import { Form, Button } from 'react-bootstrap';
+import { Modal, Button, Form } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 
-export const JamiyaForm = (props) => {
+
+export const JamiyaForm = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
     const [newJamiya, setNewJamiya] = useState({
         title: "",
         image: "",
-        amount: null,
-        limit: null,
-        startDate: Date.now(),
-        endDate: Date.now(),
+        amount: "",
+        limit: "",
+        startDate: "",
+        endDate: "",
 
     });
 
@@ -23,11 +25,22 @@ export const JamiyaForm = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         jamiyaStore.createJamiya(newJamiya);
-        authStore.checkForToken(authStore.user._id);
-        props.closeModal();
+        setIsOpen(false);
+        
     }
+
+    
     return (
-        <div>
+        
+        <>
+      <Button className="jamya" onClick={() => setIsOpen(true)}>
+        Create Jam3ya
+      </Button>
+      <Modal centered show={isOpen} onHide={() => setIsOpen(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Create Jam3ya</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
             <Form onSubmit={{handleSubmit}}>
                 <Form.Group className="mb-3">
                     <Form.Label>Title</Form.Label>
@@ -56,20 +69,25 @@ export const JamiyaForm = (props) => {
                 <Form.Group className="mb-3">
                     <Form.Label>StartDate</Form.Label>
                     <DatePicker
-                         value={newJamiya.startDate} onChange={handleChange} selected ={newJamiya.startDate} onChange={(date) => setNewJamiya({...newJamiya, startDate: date})} />
+                           selected ={newJamiya.startDate} onChange={(date) => setNewJamiya({...newJamiya, startDate: date})} />
                 </Form.Group>
 
                 <Form.Group className="mb-3">
                     <Form.Label>EndDate</Form.Label>
                     <DatePicker
-                         value={newJamiya.endDate} onChange={handleChange} selected ={newJamiya.endDate} onChange={(date) => setNewJamiya({...newJamiya, endDate: date})} />
+                          selected ={newJamiya.endDate} onChange={(date) => setNewJamiya({...newJamiya, endDate: date})} />
                 </Form.Group>
-            <Button variant="primary" onClick={handleSubmit}>
-                Submit</Button>
+            
             </Form>
 
-
-        </div>
+            </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleSubmit}>
+            Create Jam3ya
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
     )
 }
 export default observer(JamiyaForm)

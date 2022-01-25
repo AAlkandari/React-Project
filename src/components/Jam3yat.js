@@ -1,39 +1,24 @@
-import React, { Fragment, useEffect, useState } from "react";
-import axios from "axios";
-import { Col, Row } from "react-bootstrap";
+import React, { Fragment } from "react";
+import { Row } from "react-bootstrap";
 import Jam3ya from "./Jam3ya";
+import jamiyaStore from "../stores/jamiyaStore";
+import { observer } from "mobx-react";
 
 function Jam3yat() {
-  useEffect(() => {
-    getJam3yat();
-  }, []);
+  const jam3yaList = jamiyaStore.jamiyaat.map((jam3ya) => (
+    <Jam3ya jam3ya={jam3ya} key={jam3ya._id}/>
+  ));
+  if (jamiyaStore.loading) return <h1>Loading</h1>;
+  console.log(
+    "🚀 ~ file: Jam3yat.js ~ line 9 ~ Jam3yat ~ jam3yaList",
+    jam3yaList
+  );
 
-  const [jam3yat, setJam3yat] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  const getJam3yat = async () => {
-    try {
-      const res = await axios.get(
-        "https://coded-miniproject-jam3ya-be.herokuapp.com/jam3ya"
-      );
-      setJam3yat(res.data);
-      setLoading(true);
-    } catch (err) {
-      alert(err.message);
-    }
-  };
   return (
     <Fragment>
-      <Row className="align-items-stretch">
-        {loading &&
-          jam3yat.map((jam3ya) => (
-            <Col sm={12} md={6} lg={4} key={jam3ya.author.startDate}>
-              <Jam3ya jam3ya={jam3ya} />
-            </Col>
-          ))}
-      </Row>
+      <Row className="align-items-stretch">{jam3yaList}</Row>
     </Fragment>
   );
 }
 
-export default Jam3yat;
+export default observer(Jam3yat);

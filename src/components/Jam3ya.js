@@ -1,9 +1,18 @@
-import React from "react";
-import { Button, Card } from "react-bootstrap";
+import React, {useState} from "react";
+import { Button, Card, Col } from "react-bootstrap";
+import jamiyaStore from "../stores/jamiyaStore";
+import authStore from "../stores/authStore";
+import JamiyaUpdate from "./UpdateJamiya"
 
 function Jam3ya({ jam3ya }) {
+
+  const handleDelete = () => {
+    jamiyaStore.deleteJamiya(jam3ya._id);
+}
+const [closeModal, setIsOpen] = useState(false);
+
   return (
-    <div className="text-center">
+    <Col sm={12} md={6} lg={4} key={jam3ya.author.startDate}>
       <Card className="cardClass my-4 p-4 rounded h-90">
         <Card.Img
           className="card-image"
@@ -12,7 +21,7 @@ function Jam3ya({ jam3ya }) {
           src={jam3ya.image}
         />
         <Card.Body>
-          <Card.Title>{`${jam3ya.title}`}</Card.Title>
+          <Card.Title>{jam3ya.title}</Card.Title>
 
           <Card.Subtitle className="mb-2 text-muted">Info</Card.Subtitle>
           <Card.Text>
@@ -37,7 +46,7 @@ function Jam3ya({ jam3ya }) {
               <strong>Email:</strong> {jam3ya.author.email}
             </div>
           </Card.Text>
-          <a hrfe={`mailto: ${jam3ya.author.email}`}>
+          <a href={`mailto: ${jam3ya.author.email}`}>
             <Button
               style={{ borderRadius: "20px" }}
               className="w-100 align-item-center"
@@ -46,9 +55,22 @@ function Jam3ya({ jam3ya }) {
               For More Info Contact Us
             </Button>
           </a>
+      
+          { authStore.user && jam3ya.author._id === authStore.user._id &&
+          <Button style={{ borderRadius: "20px" }}
+              className="w-100 align-item-center"
+              variant="primary"  onClick={handleDelete}>
+            Delete
+          </Button>
+          
+        }
+         {authStore.user && jam3ya.author._id === authStore.user._id && 
+        <JamiyaUpdate setIsOpen={setIsOpen} closeModal={closeModal} jam3ya={jam3ya}  />
+         }
+
         </Card.Body>
       </Card>
-    </div>
+    </Col>
   );
 }
 
