@@ -1,28 +1,33 @@
 import React from "react";
-import { Card, ListGroup, ListGroupItem } from "react-bootstrap/";
-import axios from "axios";
-import api from "../api";
+import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import { observer } from "mobx-react-lite";
 
-function DetailsBio() {
+//Try mapping code from Ollivander's wand shop task (below)
+//const jm3yaDetails = api.map((jm3ya) => <DetailsPage jm3ya={jm3ya} />);
+
+/* <div>
+    {this.state.people.map((person, index) => (
+        <p>Hello, {person.name} from {person.country}!</p> */
+
+function DetailsBio({ jamiya }) {
   return (
     <div>
-      <Card style={{ width: "12rem" }}>
+      <Card style={{ width: "13rem" }}>
         {" "}
-        <Card.Body style={{ backgroundColor: "#4FBDBA" }}>
-          <Card.Title style={{ color: "white", fontSize: 22 }}>
-            Creator
+        <Card.Body style={{ backgroundColor: "#A5E1AD" }}>
+          <Card.Title style={{ color: "black", fontSize: 22 }}>
+            @{jamiya.author.username}
           </Card.Title>
         </Card.Body>
         <ListGroup className="list-group-flush">
-          <ListGroupItem>Start date:</ListGroupItem>
-          <ListGroupItem>End date:</ListGroupItem>
+          <ListGroupItem>Start date: {jamiya.startDate}</ListGroupItem>
+          <ListGroupItem>End date: {jamiya.endDate}:</ListGroupItem>
           <ListGroupItem>Duration: (months)</ListGroupItem>
-          <ListGroupItem>Amount to pay monthly:</ListGroupItem>
-          <ListGroupItem>Total jm3ya amount:</ListGroupItem>
+          <ListGroupItem>Amount: {jamiya.amount}</ListGroupItem>
         </ListGroup>
       </Card>
     </div>
   );
 }
 
-export default DetailsBio;
+export default observer(DetailsBio);

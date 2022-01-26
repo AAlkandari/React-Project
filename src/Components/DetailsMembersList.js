@@ -8,26 +8,26 @@ function DetailsMembersList() {
         <ListGroup.Item style={{ backgroundColor: "white" }}>
           user
         </ListGroup.Item>
-        <ListGroup.Item style={{ backgroundColor: "#AEFEFF" }}>
+        <ListGroup.Item style={{ backgroundColor: "#A5E1AD" }}>
           user
         </ListGroup.Item>
 
         <ListGroup.Item style={{ backgroundColor: "white" }}>
           user
         </ListGroup.Item>
-        <ListGroup.Item style={{ backgroundColor: "#AEFEFF" }}>
+        <ListGroup.Item style={{ backgroundColor: "#A5E1AD" }}>
           user
         </ListGroup.Item>
         <ListGroup.Item style={{ backgroundColor: "white" }}>
           user
         </ListGroup.Item>
-        <ListGroup.Item style={{ backgroundColor: "#AEFEFF" }}>
+        <ListGroup.Item style={{ backgroundColor: "#A5E1AD" }}>
           user
         </ListGroup.Item>
         <ListGroup.Item style={{ backgroundColor: "white" }}>
           user
         </ListGroup.Item>
-        <ListGroup.Item style={{ backgroundColor: "#AEFEFF" }}>
+        <ListGroup.Item style={{ backgroundColor: "#A5E1AD" }}>
           user
         </ListGroup.Item>
       </ListGroup>

@@ -5,7 +5,7 @@
 .DetailsProfilePic {
   display: flex;
   justify-content: left;
-  width: 150px;
+  width: 300px;
 }
 
 .DetailsHeading {
@@ -17,7 +17,7 @@
   justify-content: right;
   margin-top: 10px;
   margin-right: 10px;
-  background-color: #aefeff;
+  background-color: #a5e1ad;
 }
 
 .card {

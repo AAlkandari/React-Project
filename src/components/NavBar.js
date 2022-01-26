@@ -4,6 +4,7 @@ import SignInModal from "./SignInModal";
 import SignUpModal from "./SignUpModal";
 import authStore from "../stores/authStore";
 import { observer } from "mobx-react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -14,6 +15,9 @@ function Navbar() {
       ) : (
         <>
           <SignUpModal />
+          <Link to={"/"}>
+            <Button>Home</Button>
+          </Link>
           <SignInModal />
         </>
       )}
