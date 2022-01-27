@@ -1,19 +1,18 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Button, Card, Col } from "react-bootstrap";
 import jamiyaStore from "../stores/jamiyaStore";
 import authStore from "../stores/authStore";
-import JamiyaUpdate from "./UpdateJamiya"
+import JamiyaUpdate from "./UpdateJamiya";
 
 function Jam3ya({ jam3ya }) {
-
   const handleDelete = () => {
     jamiyaStore.deleteJamiya(jam3ya._id);
-}
-const [closeModal, setIsOpen] = useState(false);
+  };
+  const [closeModal, setIsOpen] = useState(false);
 
   return (
     <Col sm={12} md={6} lg={4} key={jam3ya.author.startDate}>
-      <Card className="cardClass my-4 p-4 rounded h-90">
+      <Card className="cardClass my-4 p-4 rounded h-90 text-center">
         <Card.Img
           className="card-image"
           style={{ objectFit: "contain" }}
@@ -29,7 +28,7 @@ const [closeModal, setIsOpen] = useState(false);
               <strong>Limit:</strong> {jam3ya.limit}
             </div>
             <div>
-              <strong>Amount:</strong> {jam3ya.amoun}
+              <strong>Amount:</strong> {jam3ya.amount}
             </div>
             <div>
               <strong>Start:</strong> {jam3ya.startDate}
@@ -55,19 +54,24 @@ const [closeModal, setIsOpen] = useState(false);
               For More Info Contact Us
             </Button>
           </a>
-      
-          { authStore.user && jam3ya.author._id === authStore.user._id &&
-          <Button style={{ borderRadius: "20px" }}
-              className="w-100 align-item-center"
-              variant="primary"  onClick={handleDelete}>
-            Delete
-          </Button>
-          
-        }
-         {authStore.user && jam3ya.author._id === authStore.user._id && 
-        <JamiyaUpdate setIsOpen={setIsOpen} closeModal={closeModal} jam3ya={jam3ya}  />
-         }
 
+          {authStore.user && jam3ya.author._id === authStore.user._id && (
+            <Button
+              style={{ borderRadius: "20px" }}
+              className="w-100 align-item-center"
+              variant="primary"
+              onClick={handleDelete}
+            >
+              Delete
+            </Button>
+          )}
+          {authStore.user && jam3ya.author._id === authStore.user._id && (
+            <JamiyaUpdate
+              setIsOpen={setIsOpen}
+              closeModal={closeModal}
+              jam3ya={jam3ya}
+            />
+          )}
         </Card.Body>
       </Card>
     </Col>

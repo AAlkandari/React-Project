@@ -5,25 +5,23 @@ import SignUpModal from "./SignUpModal";
 import authStore from "../stores/authStore";
 import { observer } from "mobx-react";
 import { JamiyaForm } from "./JamiyaForm";
+import SearchBar from "./SearchBar";
 
-
-function Navbar() {
+function Navbar({ setSearch }) {
   return (
     <Nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       {authStore.user ? authStore.user.username : ""}
       {authStore.user ? (
-
-        
         <div>
           <Button onClick={authStore.signout}>SignOut</Button>
           <JamiyaForm />
-          </div>
-    
-      ) : ( 
+        </div>
+      ) : (
         <>
           <SignUpModal />
           <SignInModal />
-          
+
+          <SearchBar setSearch={setSearch} />
         </>
       )}
     </Nav>
