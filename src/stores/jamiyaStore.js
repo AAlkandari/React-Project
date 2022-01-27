@@ -12,13 +12,8 @@ class JamiyaStore{
     fetchJamiya = async () => {
         try {
             const response = await api.get('/jam3ya');
-            console.log("🚀 ~ file: jamiyaStore.js ~ line 14 ~ JamiyaStore ~ fetchJamiya= ~ response", response.data)
-           
             this.jamiyaat = response.data;
-            console.log("🚀 ~ file: jamiyaStore.js ~ line 17 ~ JamiyaStore ~ fetchJamiya= ~ this.jamiyaat", this.jamiyaat)
             this.loading = false;
-            
-            
         }
         catch(error) {} 
     }
@@ -56,8 +51,9 @@ class JamiyaStore{
     joinJamiya = async (id) => {
         try{
             const response = await api.post(`/jam3ya/join/${id}`);
-            const jamiya = this.jamiyaat.find((jam3ya) => jam3ya._id === id);
-            jamiya.users.push(response.data);
+            this.jamiyaat = this.jamiyaat.map((jam3ya) => jam3ya._id === id ? response.data : jam3ya);
+            console.log("You've Joined ELJAM3YA!")
+          
         }
         catch(error) {console.log("You Cannot Join ELJamiya");}
     }
@@ -66,6 +62,7 @@ class JamiyaStore{
         try{
             const response = await api.post(`/jam3ya/leave/${id}`);
             this.jamiyaat = this.jamiyaat.map((jam3ya) => jam3ya._id === id ? response.data : jam3ya);
+            console.log("You've Left ELJam3ya!");
         }
         catch(error) {}
     }

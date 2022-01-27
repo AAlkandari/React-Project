@@ -4,16 +4,17 @@ import Jam3ya from "./Jam3ya";
 import jamiyaStore from "../stores/jamiyaStore";
 import { observer } from "mobx-react";
 
-function Jam3yat() {
-  const jam3yaList = jamiyaStore.jamiyaat.map((jam3ya) => (
-    <Jam3ya jam3ya={jam3ya} key={jam3ya._id}/>
-  ));
-  if (jamiyaStore.loading) return <h1>Loading</h1>;
-  console.log(
-    "🚀 ~ file: Jam3yat.js ~ line 9 ~ Jam3yat ~ jam3yaList",
-    jam3yaList
-  );
+function Jam3yat({search}) {
 
+  if (jamiyaStore.loading) return <h1>Loading</h1>;
+
+  const jam3yaList = jamiyaStore.jamiyaat
+    .filter((jam3ya) => {
+      if (search === "") return true;
+      else return jam3ya.amount <= parseInt(search);
+    })
+    .map((jam3ya) => <Jam3ya jam3ya={jam3ya} key={jam3ya._id} />);
+ 
   return (
     <Fragment>
       <Row className="align-items-stretch">{jam3yaList}</Row>

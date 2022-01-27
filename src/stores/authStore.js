@@ -40,7 +40,8 @@ class AuthStore {
         delete api.defaults.headers.common.Authorization;
         this.user = null;
         localStorage.removeItem("myToken");
-     }
+    };
+     
      checkForToken = () => {
         const token = localStorage.getItem("myToken");
         if(token){
