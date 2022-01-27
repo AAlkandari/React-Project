@@ -8,7 +8,7 @@ function Jam3yat({search}) {
 
   if (jamiyaStore.loading) return <h1>Loading</h1>;
 
-  const jam3yaList = jamiyaStore.jamiyaat
+  const searchList = jamiyaStore.jamiyaat
     .filter((jam3ya) => {
       if (search === "") return true;
       else return jam3ya.amount <= parseInt(search);
