@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Button, Card, Col } from "react-bootstrap";
 import jamiyaStore from "../stores/jamiyaStore";
 import authStore from "../stores/authStore";

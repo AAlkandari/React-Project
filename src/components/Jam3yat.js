@@ -17,7 +17,7 @@ function Jam3yat({search}) {
  
   return (
     <Fragment>
-      <Row className="align-items-stretch">{jam3yaList}</Row>
+      <Row className="align-items-stretch">{searchList}</Row>
     </Fragment>
   );
 }
